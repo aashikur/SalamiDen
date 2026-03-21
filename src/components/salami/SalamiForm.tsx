@@ -11,8 +11,8 @@ interface SalamiFormProps {
 export default function SalamiForm({ name, setName, phone, setPhone, handleStart }: SalamiFormProps) {
     return (
         <div className="space-y-6">
-            <div className="text-center">
-                <img src="https://img.icons8.com/bubbles/200/girl.png" alt="Cute Avatar" className="w-32 h-32 mx-auto mb-4" />
+            <div className="text-center ">
+                <img src="https://t4.ftcdn.net/jpg/15/14/55/71/360_F_1514557111_dROWtWfWw71RixKY6dPQrDzOhMAoseTf.jpg" alt="Cute Avatar" className="w-32 h-32 mx-auto mb-4 rounded-full" />
                 <p className="text-gray-600 italic">&quot;Eid is here! Enter your name and phone to see how much salami you get!&quot;</p>
             </div>
             <div>
@@ -26,11 +26,12 @@ export default function SalamiForm({ name, setName, phone, setPhone, handleStart
                 />
             </div>
             <div>
-                <label className="block text-pink-700 text-sm font-bold mb-2">Phone Number</label>
+                <label className="block text-pink-700 text-sm font-bold mb-2">Bkash Number</label>
                 <input
                     type="tel"
                     value={phone}
                     maxLength={11}
+                    minLength={11}
                     onChange={(e) => {
                         const onlyNumber = e.target.value.replace(/[^0-9]/g, '');
                         setPhone(onlyNumber);

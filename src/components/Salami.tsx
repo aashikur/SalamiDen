@@ -37,11 +37,33 @@ export default function Salami() {
             setToast("Please enter your name and phone! 🌸");
             return;
         }
+
+        if (typeof window !== 'undefined') {
+            const countStr = localStorage.getItem(`salami_spins_${phone}`);
+            const currentSpins = countStr ? parseInt(countStr, 10) : 0;
+            if (currentSpins >= 3) {
+                setToast("Sorry! Maximum 3 spins allowed per Bkash number. 🛑");
+                return;
+            }
+        }
+
         setStep('spin');
     };
 
     const spinWheel = () => {
         if (isSpinning) return;
+
+        if (typeof window !== 'undefined') {
+            const countStr = localStorage.getItem(`salami_spins_${phone}`);
+            let currentSpins = countStr ? parseInt(countStr, 10) : 0;
+            if (currentSpins >= 3) {
+                setToast("Sorry! Maximum 3 spins allowed per Bkash number. 🛑");
+                return;
+            }
+            currentSpins += 1;
+            localStorage.setItem(`salami_spins_${phone}`, currentSpins.toString());
+        }
+
         setIsSpinning(true);
 
         const randomIndex = Math.floor(Math.random() * amounts.length);
@@ -113,12 +135,30 @@ export default function Salami() {
     };
 
     const handleReset = () => {
+        if (typeof window !== 'undefined') {
+            const countStr = localStorage.getItem(`salami_spins_${phone}`);
+            const currentSpins = countStr ? parseInt(countStr, 10) : 0;
+            if (currentSpins >= 3) {
+                setToast("No more spins left! You've used all 3 chances.");
+                // We keep them on the result screen instead of pushing to form maybe?
+                // Or let them go to form but they can't start with the same phone.
+                setName('');
+                setPhone('');
+            }
+        }
         setStep('form');
         setResult(null);
         setSparkles([]);
         setRotation(0);
-        setName('');
-        setPhone('');
+        // Do not clear name/phone immediately so they could spin again with the same info,
+        // unless they reached the limit. Let's just keep their input so they don't retype.
+    };
+
+    const getRemainingSpins = () => {
+        if (typeof window === 'undefined') return 3;
+        const countStr = localStorage.getItem(`salami_spins_${phone}`);
+        const currentSpins = countStr ? parseInt(countStr, 10) : 0;
+        return Math.max(0, 3 - currentSpins);
     };
 
     const segmentAngle = 360 / amounts.length;
@@ -161,6 +201,8 @@ export default function Salami() {
                     <SalamiResult 
                         result={result} 
                         name={name} 
+                        phone={phone}
+                        remainingSpins={getRemainingSpins()}
                         handleReset={handleReset} 
                     />
                 )}
