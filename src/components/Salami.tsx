@@ -176,7 +176,7 @@ export default function Salami() {
                 {/* Header */}
                 <div className="text-center mb-8">
                     <h1 className="eid-font text-5xl text-pink-600 mb-2">Eid Mubarak</h1>
-                    <p className="text-pink-400 font-semibold uppercase tracking-widest text-sm">Digital Salami Wheel</p>
+                    <p className="text-pink-400 font-semibold uppercase tracking-widest text-sm">Digital Edi Wheel</p>
                 </div>
 
                 {step === 'form' && (

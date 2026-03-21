@@ -13,7 +13,7 @@ export default function SalamiForm({ name, setName, phone, setPhone, handleStart
         <div className="space-y-6">
             <div className="text-center ">
                 <img src="https://t4.ftcdn.net/jpg/15/14/55/71/360_F_1514557111_dROWtWfWw71RixKY6dPQrDzOhMAoseTf.jpg" alt="Cute Avatar" className="w-32 h-32 mx-auto mb-4 rounded-full" />
-                <p className="text-gray-600 italic">&quot;Eid is here! Enter your name and phone to see how much salami you get!&quot;</p>
+                <p className="text-gray-600 italic mx-auto">&quot;Eid is here! Enter your name and Bkash number to see how much edi you get!&quot;</p>
             </div>
             <div>
                 <label className="block text-pink-700 text-sm font-bold mb-2">Your Name</label>
