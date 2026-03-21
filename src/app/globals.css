@@ -65,7 +65,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(7deg) translate(0, -130px);
+    transform: translate(-50%, -50%) rotate(14deg) translate(0, -130px);
     font-weight: 800;
     font-size: 0.715rem;
     text-align: center;

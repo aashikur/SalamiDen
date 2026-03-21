@@ -8,10 +8,13 @@ import Lanterns from './salami/Lanterns';
 import Sparkles from './salami/Sparkles';
 import Toast from './salami/Toast';
 
-const amounts: number[] = [];
-for (let i = 0; i <= 20; i = i + 1) {
-    amounts.push(i);
-}
+const amounts: number[] = [ 5, 18,7, 5 , 20, 5, 6, 0, 15, 5, 7, 8, 9, 10];
+
+// for (let i = 0; i <= 20; i = i + 1) {
+//     amounts.push(i);
+// }
+
+
 
 const colors = ['#fff1f2', '#fce7f3', '#fbcfe8', '#f9a8d4', '#f472b6', '#db2777'];
 
